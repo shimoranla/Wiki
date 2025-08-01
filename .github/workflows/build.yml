@@ -1,0 +1,67 @@
+name: Build and Deploy to pages branch
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v4
+      with:
+        node-version: 'latest'
+
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: 9
+        run_install: false
+
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # 完整克隆方便切换和推送分支
+
+    - name: Install dependencies
+      run: pnpm install
+
+    - name: Patch Theme text
+      run: sed -i 's/自豪地使用 %s 主题/正在使用 %s 主题.apk/' node_modules/hexo-theme-kratos-rebirth/languages/zh-CN.yml
+
+    - name: Generate Hexo site
+      run: npx hexo generate --force
+
+    - name: Deploy to pages branch
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+
+        # 克隆 pages 分支到本地目录
+        git clone --branch pages https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }} pages_branch
+
+        cd pages_branch
+
+        # 删除除 .git 以外的所有文件
+        git rm -r --cached .
+        git clean -fdx
+
+        # 拷贝 Hexo 构建输出
+        cp -r ../public/* .
+
+        git add .
+
+        # 如果无变化则退出
+        if git diff-index --quiet HEAD --; then
+          echo "No changes to deploy"
+          exit 0
+        fi
+
+        git commit -m "Deploy Hexo site from commit ${{ github.sha }}"
+
+        git push origin pages --force
