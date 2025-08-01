@@ -9,11 +9,11 @@ search:
 
 # 图片配置
 image:
-  favicon: "/assets/boximengling.webp" # 站点图标
-  avatar: "/assets/boximengling.webp" # 个人信息挂件上的头像
+  favicon: "/assets/boximengling.png" # 站点图标
+  avatar: "/assets/boximengling.png" # 个人信息挂件上的头像
   background:
-    light: "/assets/guangyuyin.webp"
-    dark: "/assets/zhenzhu.webp"
+    light: "/assets/guangyuyin.jpg"
+    dark: "/assets/zhenzhu.jpg"
 
 # 顶部导航栏配置
 nav:
