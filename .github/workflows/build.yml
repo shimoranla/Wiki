@@ -1,4 +1,4 @@
-name: Build and Deploy to pages branch
+name: Build and Deploy to `pages` Branch for Vercel
 
 on:
   push:
@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Setup Node.js environment
+    - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
         node-version: 'latest'
@@ -21,47 +21,36 @@ jobs:
         version: 9
         run_install: false
 
-    - name: Checkout repository
+    - name: Checkout Repository
       uses: actions/checkout@v4
       with:
-        fetch-depth: 0  # 完整克隆方便切换和推送分支
+        fetch-depth: 0
 
     - name: Install dependencies
       run: pnpm install
 
-    - name: Patch Theme text
-      run: sed -i 's/自豪地使用 %s 主题/正在使用 %s 主题.apk/' node_modules/hexo-theme-kratos-rebirth/languages/zh-CN.yml
+    - name: Patch theme text
+      run: |
+        sed -i 's/自豪地使用 %s 主题/正在使用 %s 主题.apk/' node_modules/hexo-theme-kratos-rebirth/languages/zh-CN.yml
 
-    - name: Generate Hexo site
+    - name: Generate site with Hexo
       run: npx hexo generate --force
 
-    - name: Deploy to pages branch
+    - name: Deploy to `pages` branch
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        git config user.name "github-actions[bot]"
-        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-        # 克隆 pages 分支到本地目录
-        git clone --branch pages https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }} pages_branch
+        mkdir deploy_dir
+        cp -r public/* deploy_dir/
 
-        cd pages_branch
-
-        # 删除除 .git 以外的所有文件
-        git rm -r --cached .
-        git clean -fdx
-
-        # 拷贝 Hexo 构建输出
-        cp -r ../public/* .
+        cd deploy_dir
+        git init
+        git checkout -b pages
+        git remote add origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}
 
         git add .
-
-        # 如果无变化则退出
-        if git diff-index --quiet HEAD --; then
-          echo "No changes to deploy"
-          exit 0
-        fi
-
         git commit -m "Deploy Hexo site from commit ${{ github.sha }}"
-
         git push origin pages --force
