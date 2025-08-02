@@ -12,7 +12,7 @@ image:
   favicon: "/assets/boximengling.png" # 站点图标
   avatar: "/assets/boximengling.png" # 个人信息挂件上的头像
   background:
-    light: "/assets/guangyuyin.jpg"
+    light: "/assets/guangyuying.jpg"
     dark: "/assets/zhenzhu.jpg"
 
 # 顶部导航栏配置
