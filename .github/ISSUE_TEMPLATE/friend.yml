@@ -1,0 +1,25 @@
+name: "申请友链"
+description: "请求交换友链"
+labels: [友链申请,待处理]
+body:
+- type: textarea
+  id: "yml-1"
+  attributes:
+    label: "你的网站链接"
+    description: "详细描述具体表现。"
+  validations:
+    required: true
+- type: textarea
+  id: "yml-2"
+  attributes:
+    label: "附件"
+    description: "在这里贴网站预览图等。"
+  validations:
+    required: false
+- type: textarea
+  id: "yml-2"
+  attributes:
+    label: "注意事项"
+    description: "如果没有办法在收到通知后及时处理，请在这里说明"
+  validations:
+    required: false
