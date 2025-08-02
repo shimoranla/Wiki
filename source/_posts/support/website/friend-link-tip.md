@@ -29,4 +29,4 @@ tags:
 4.由于本站不提供站内评论功能（其实是还没写），所以请求会被转到 GitHub 上处理。
 
 
-[点击此交换友链](https://github.com/shimoranla/Wiki/issues/new)
+[点击此交换友链](https://github.com/shimoranla/Wiki/issues/new?template=friend.yml)
