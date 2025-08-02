@@ -17,7 +17,7 @@ body:
   validations:
     required: false
 - type: textarea
-  id: "yml-2"
+  id: "yml-3"
   attributes:
     label: "注意事项"
     description: "如果没有办法在收到通知后及时处理，请在这里说明"
