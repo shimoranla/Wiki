@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  
+    <link rel="icon" href="/assets/img/boximengling.png">
+  
+  
+  <title>DN42 实验网络注册指北 | 薄奚梦灵的小窝</title>
+  <link rel="canonical" href="https://krt.moe/posts/dn42/dn42-registry/">
+  <meta name="author" content="薄奚梦灵" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="Network" />
+  
+  <meta name="description" content="开始之前必读不建议更改除了必须要更改地地方，不然可能推上去检查报错导致努力白费。 DN42 网络不提供网络出口，也不提供绕过国内审查的功能！！ 在注册 DN42 之前，请确保你已经可以熟练的运用 Git 等工具，并有能力操作 Linux 系统（非图形化版本）。 DN42 网络基本模拟了真实的互联网自治系统注册流程，所以总体比较繁琐（本人弄了快一个小时才完成这些注册流程）。 DN42 注册需要签名，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DN42 实验网络注册指北">
+<meta property="og:url" content="https://krt.moe/posts/dn42/dn42-registry/index.html">
+<meta property="og:site_name" content="薄奚梦灵的小窝">
+<meta property="og:description" content="开始之前必读不建议更改除了必须要更改地地方，不然可能推上去检查报错导致努力白费。 DN42 网络不提供网络出口，也不提供绕过国内审查的功能！！ 在注册 DN42 之前，请确保你已经可以熟练的运用 Git 等工具，并有能力操作 Linux 系统（非图形化版本）。 DN42 网络基本模拟了真实的互联网自治系统注册流程，所以总体比较繁琐（本人弄了快一个小时才完成这些注册流程）。 DN42 注册需要签名，">
+<meta property="og:locale">
+<meta property="og:image" content="https://krt.moe/posts/dn42/dn42-registry/assets/img/yuehuawu.jpg">
+<meta property="article:published_time" content="2025-08-01T10:51:11.000Z">
+<meta property="article:modified_time" content="2025-08-04T02:52:49.872Z">
+<meta property="article:author" content="薄奚梦灵">
+<meta property="article:tag" content="Network">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://krt.moe/posts/dn42/dn42-registry/assets/img/yuehuawu.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="薄奚梦灵的小窝" type="application/atom+xml">
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kr-core.min.css" media="all"></link>
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/highlight.js/night-eighties.min.css" media="all"></link>
+  
+  <link rel="stylesheet" id="theme-light-css" href="/css/kr-theme/light.min.css" media="all"></link>
+  <link rel="stylesheet" id="theme-dark-css" href="/css/kr-theme/dark.min.css" media="(prefers-color-scheme: dark)"></link>
+  <script src="/js/kr-theme.min.js"></script>
+  <link rel="stylesheet" id="fontawe-css" href="/vendors/font-awesome@4.7.0/css/font-awesome.min.css" media="all"></link>
+  
+    <link rel="stylesheet" id="nprogress-css" href="/vendors/nprogress@0.2.0/nprogress.css" media="all"></link>
+  
+  
+    <link rel="stylesheet" href="/vendors/viewerjs@1.11.6/dist/viewer.min.css"></link>
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  
+    <script src="/vendors/qr-code-styling@1.6.0-rc.1/lib/qr-code-styling.js"></script>
+  
+  <!-- 自定义站点横幅和背景 -->
+  <style>
+    
+      .kratos-cover.kratos-cover-2 {
+        background-image: url('');
+      }
+      html[data-theme="dark"] .kratos-cover.kratos-cover-2 {
+        background-image: url('');
+      }
+    
+    
+      @media(min-width:768px) {
+        body.custom-background {
+          background-image: url('/assets/img/guangyuying.jpg');
+        }
+        html[data-theme="dark"] body.custom-background {
+          background-image: url('/assets/img/zhenzhu.jpg');
+        }
+      }
+    
+    
+      .widget-kratos-about .photo-background {
+        background-image: url('/images/default.webp');
+      }
+      html[data-theme="dark"] .widget-kratos-about .photo-background {
+        background-image: url('/images/default.webp');
+      }
+    
+  </style>
+
+  <!-- 额外的追加注入项 -->
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    <li>
+                                        
+                                            <a href="/">
+                                        
+                                            
+                                                <i class="fa fa-home"></i>
+                                            
+                                            首页
+                                        </a>
+                                        
+                                    </li>
+                                
+                                    <li>
+                                        
+                                            <a href="/archives/">
+                                        
+                                            
+                                                <i class="fa fa-file"></i>
+                                            
+                                            档案馆
+                                        </a>
+                                        
+                                    </li>
+                                
+                                    <li>
+                                        
+                                            <a href="/posts/friend-link">
+                                        
+                                            
+                                                <i class="fa fa-link"></i>
+                                            
+                                            友情链接
+                                        </a>
+                                        
+                                    </li>
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">薄奚梦灵的小窝</a></div>
+                    <div id="kratos-nav-toggle-wrapper" class="nav-toggle">
+                        <a id="kratos-nav-toggle" class="kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>薄奚梦灵的小窝</h2> <br />
+                        <span>至少在这一刻 热爱不问为何</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+
+
+        
+
+            
+
+            <section class="kr-main-col col-md-8">
+
+        
+
+            <article itemscope itemtype="https://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://krt.moe/posts/dn42/dn42-registry/">
+    <div class="kratos-hentry kratos-page-inner clearfix">
+        <header class="kratos-page-header">
+            
+                <h1 class="kratos-page-title text-center" itemprop="name headline">DN42 实验网络注册指北</h1>
+            
+            <ul class="kratos-page-meta text-center">
+                <li><time datetime="2025-08-01T10:51:11.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2025-08-01</time></li>
+                <li itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <i class="fa fa-user"></i> 作者 <span itemprop="name">薄奚梦灵</span>
+                </li>
+                
+                    <li>
+                        <i class="fa fa-edit"></i> 
+                        
+                        
+                            ~10.51K
+                        
+                        字
+                    </li>
+                
+                
+                
+            </ul>
+        </header>
+        <div class="kratos-page-content kr-post">
+            
+            
+            
+                <div class="kratos-post-inner-toc toc-div-class" >
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E4%B9%8B%E5%89%8D%E5%BF%85%E8%AF%BB"><span class="toc-number">1.</span> <span class="toc-text">开始之前必读</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E7%BD%AE%E5%B7%A5%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text">前置工作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-GPG-%E5%AF%86%E9%92%A5"><span class="toc-number">2.1.</span> <span class="toc-text">创建 GPG 密钥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-SSH-%E5%AF%86%E9%92%A5"><span class="toc-number">2.2.</span> <span class="toc-text">创建 SSH 密钥</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E5%BC%8F%E6%B5%81%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">正式流程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-Mntner-%E6%96%87%E4%BB%B6"><span class="toc-number">3.1.</span> <span class="toc-text">创建 Mntner 文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-Person-%E6%96%87%E4%BB%B6"><span class="toc-number">3.2.</span> <span class="toc-text">创建 Person 文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9-ASN"><span class="toc-number">3.3.</span> <span class="toc-text">选择 ASN</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9-IPv4-%E5%9C%B0%E5%9D%80"><span class="toc-number">3.4.</span> <span class="toc-text">选择 IPv4 地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9-IPv6-%E5%9C%B0%E5%9D%80"><span class="toc-number">3.5.</span> <span class="toc-text">选择 IPv6 地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.6.</span> <span class="toc-text">检查文件格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A8%E9%80%81%E4%BB%93%E5%BA%93"><span class="toc-number">3.7.</span> <span class="toc-text">推送仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GPG-%E7%AD%BE%E5%90%8D"><span class="toc-number">3.7.1.</span> <span class="toc-text">GPG 签名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SSH-%E7%AD%BE%E5%90%8D"><span class="toc-number">3.7.2.</span> <span class="toc-text">SSH 签名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E6%9C%AC%E5%9C%B0%E5%88%86%E6%94%AF"><span class="toc-number">3.7.3.</span> <span class="toc-text">更新本地分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E9%80%81"><span class="toc-number">3.7.4.</span> <span class="toc-text">推送</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%91%E9%80%81%E6%B3%A8%E5%86%8C%E8%AF%B7%E6%B1%82"><span class="toc-number">3.8.</span> <span class="toc-text">发送注册请求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">3.8.1.</span> <span class="toc-text">注意事项</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%93%E6%9D%9F"><span class="toc-number">4.</span> <span class="toc-text">结束</span></a></li></ol>
+                </div>
+            
+            <hr />
+            <div itemprop="articleBody"><h1 id="开始之前必读"><a href="#开始之前必读" class="headerlink" title="开始之前必读"></a>开始之前必读</h1><p>不建议更改除了必须要更改地地方，不然可能推上去检查报错导致努力白费。</p>
+<p>DN42 网络不提供网络出口，也不提供绕过国内审查的功能！！</p>
+<p>在注册 DN42 之前，请确保你已经可以熟练的运用 Git 等工具，并有能力操作 Linux 系统（非图形化版本）。</p>
+<p>DN42 网络基本模拟了真实的互联网自治系统注册流程，所以总体比较繁琐（本人弄了快一个小时才完成这些注册流程）。</p>
+<p>DN42 注册需要签名，GPG 或 SSH 均可。</p>
+<p>请注意，在中国大陆内使用 DN42 网络和国外服务器进行 Peer 违反了<a target="_blank" rel="noopener" href="https://www.cac.gov.cn/1996-02/02/c_126468621.htm">《中华人民共和国计算机信息网络国际联网管理暂行规定 》</a>的第六条，请自行衡量可能的法律风险。</p>
+<p>Windows 用户注册建议使用 WSL 完成，或者使用虚拟机，DN42 的 Registry 存储库含有 NTFS 不能处理的特殊字符。</p>
+<p>建议在操作过程中使用魔法，会节约不少时间。</p>
+<p>教程可能随时过时，所以仅供参考。</p>
+<p><a target="_blank" rel="noopener" href="https://git.dn42.dev/dn42/registry/src/branch/master/README.md">DN42 官方的注册指南</a></p>
+<p><a target="_blank" rel="noopener" href="https://git.dn42.dev/dn42/registry/src/branch/master/README.md">DN42 官方的 Git 操作指南（如何创建 Pull Request）</a></p>
+<p>你也可以看看<a target="_blank" rel="noopener" href="https://lantian.pub/article/modify-website/dn42-experimental-network-2020.lantian/">前辈的课本</a>，比我写的更专业点。</p>
+<h1 id="前置工作"><a href="#前置工作" class="headerlink" title="前置工作"></a>前置工作</h1><p>因为 DN42 网络注册使用 Git 进行管理，所以你必须注册一个账号。</p>
+<p><a target="_blank" rel="noopener" href="https://git.dn42.dev/">DN42 的 Gitea 服务器地址</a></p>
+<p>注册完成账号后，你需要转到 <a target="_blank" rel="noopener" href="https://git.dn42.dev/dn42/registry">DN42 的 Registry</a>，然后点派生 Fork 一份存储库到个人账号下。</p>
+<p>Fork 完成后，使用 Git 拷贝个人账号下的远程存储库到本地，进入存储库，然后使用如下命令配置 Git 使用的用户名和邮箱</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config user.name &lt;你的用户名&gt;</span><br><span class="line"></span><br><span class="line">git config user.email &lt;注册账户使用的电子邮件地址&gt;</span><br></pre></td></tr></table></figure>
+
+<p>因为 DN42 需要对提交签名，所以你需要生成 SSH&#x2F;GPG 的公钥。</p>
+<p>密钥选一个就行，不用都生成。</p>
+<h2 id="创建-GPG-密钥"><a href="#创建-GPG-密钥" class="headerlink" title="创建 GPG 密钥"></a>创建 GPG 密钥</h2><p>使用此命令生成新的 GPG 密钥</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --full-generate-key</span><br></pre></td></tr></table></figure>
+
+<p>会提供 6 中密钥类型让你选择，这里按 Enter 选默认的 ECC 公钥。</p>
+<p>然后会让你选密钥生成算法，这里按 Enter 选择默认的 ECC 算法。</p>
+<p>第三步选择密钥过期时间，输入纯数字是天数，后面加个 w 就是星期，以此类推需要月就是 m 年就是 y。</p>
+<p>按下回车后会让你确认，输入 y 就行。</p>
+<p>接下来就是填写信息。</p>
+<p>之后会让你设置安全密钥的密码（出于安全考虑，TUI 环境下密码默认不显示，不是 Bug，注意别打错了），如果你确信密钥不会泄露可以不填。</p>
+<p>创建完成后使用如下命令列出你的密钥。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --list-keys</span><br></pre></td></tr></table></figure>
+
+<p>复制密钥的 ID，然后使用如下命令将你的公钥发送到密钥服务器。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --keyserver hkp://keyserver.ubuntu.com --send-key [密钥 ID]</span><br></pre></td></tr></table></figure>
+
+<p>当然大陆网络环境嘛….. 懂的都懂，你的提交可能会因为网络问题失败。</p>
+<p>你可以选择魔法、换一个密钥服务器，或者导出你的 Key 然后使用魔法访问 keyserver.ubuntu.com，通过网页端提交 Key。</p>
+<h2 id="创建-SSH-密钥"><a href="#创建-SSH-密钥" class="headerlink" title="创建 SSH 密钥"></a>创建 SSH 密钥</h2><p>使用如下命令创建 SSH 密钥</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t ed25519</span><br></pre></td></tr></table></figure>
+
+<p>会问你保存位置，一般情况下默认就好。</p>
+<p>然后会要求输入密钥的保护密码（出于安全考虑，TUI 环境下密码默认不显示，不是 Bug，注意别打错了），你也可以按 Enter 留空。</p>
+<h1 id="正式流程"><a href="#正式流程" class="headerlink" title="正式流程"></a>正式流程</h1><h2 id="创建-Mntner-文件"><a href="#创建-Mntner-文件" class="headerlink" title="创建 Mntner 文件"></a>创建 Mntner 文件</h2><p>前置工作完成后，进入存储库文件夹，先在 <code>data/mntner</code> 下面创建一个 <code>[名称]-MNT</code> 文件。</p>
+<p>请注意替换文本。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mntner:             [名称]-MNT</span><br><span class="line">admin-c:            [名称]-DN42</span><br><span class="line">tech-c:             [名称]-DN42</span><br><span class="line">mnt-by:             [名称]-MNT</span><br><span class="line">source:             DN42</span><br><span class="line">auth:               [密钥]</span><br><span class="line">remarks:            [这里填备注]</span><br></pre></td></tr></table></figure>
+
+<p>各个字段的解释如下:</p>
+<ul>
+<li><p>mntner: 即 Maintainer，维护者，指这个网络由谁维护。</p>
+</li>
+<li><p>admin-c: 即 Admin Contact，管理员联系信息，指向后续创建的 Person 文件，一般为 [名称]-DN42。</p>
+</li>
+<li><p>tech-c: 即 Tech Contact，技术员联系信息，指向后续创建的 Person 文件，一般也为 [名称]-DN42。</p>
+</li>
+<li><p>mnt-by：即 maintain by，由谁维护，指向这个账户本身，一般为 [昵称]-MNT。</p>
+</li>
+<li><p>source：固定值 DN42。</p>
+</li>
+<li><p>auth: 认证方式，GPG 密钥格式为 <code>pgp-fingerprint [密钥 ID]</code>，SSH 填写密钥内容。</p>
+</li>
+<li><p>remarks: 备注</p>
+</li>
+</ul>
+<details>
+
+<summary>以下是我注册填写的文件，仅供参考，请勿照抄！ [点击查看]</summary>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mntner:             BOXIMENGLING-MNT</span><br><span class="line">admin-c:            BOXIMENGLING-DN42</span><br><span class="line">tech-c:             BOXIMENGLING-DN42</span><br><span class="line">mnt-by:             BOXIMENGLING-MNT</span><br><span class="line">source:             DN42</span><br><span class="line">auth:               pgp-fingerprint D5C967B98F07AD0698265595EBB2DB5EFCD3D764</span><br><span class="line">remarks:            LuoTianyi</span><br></pre></td></tr></table></figure>
+
+</details>
+
+<h2 id="创建-Person-文件"><a href="#创建-Person-文件" class="headerlink" title="创建 Person 文件"></a>创建 Person 文件</h2><p>填写完成后，你需要在 <code>data/person</code> 下面创建一个 <code>[名称]-DN42</code> 文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">person:             [这里填名称]</span><br><span class="line">e-mail:             [电子邮件地址]</span><br><span class="line">contact:            [可选，填你的社交平台，格式为 [平台]:[用户标识符]]</span><br><span class="line">nic-hdl:            [名称]-DN42</span><br><span class="line">mnt-by:             [名称]-MNT</span><br><span class="line">source:             DN42</span><br></pre></td></tr></table></figure>
+
+<p>各个字段的解释如下</p>
+<ul>
+<li><p>person: 你的名字</p>
+</li>
+<li><p>e-mail: 电子邮件地址</p>
+</li>
+<li><p>contact: 其他联系方式，比如 Telegram，填写为 telegram:[用户名]</p>
+</li>
+<li><p>nic-hdl：NIC handle，指向文件本身，即 [昵称]-DN42。</p>
+</li>
+<li><p>mnt-by：maintain by，由谁维护，指向你之前创建的 MNT 文件，[昵称]-MNT。</p>
+</li>
+<li><p>source：固定值 DN42。</p>
+</li>
+</ul>
+<details>
+
+<summary>以下是我注册填写的文件，仅供参考，请勿照抄！ [点击查看]</summary>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">person:             Boxi Mengling</span><br><span class="line">e-mail:             boximengling@outlook.com</span><br><span class="line">contact:            telegram:boximengling</span><br><span class="line">nic-hdl:            BOXIMENGLING-DN42</span><br><span class="line">mnt-by:             BOXIMENGLING-MNT</span><br><span class="line">source:             DN42</span><br></pre></td></tr></table></figure>
+
+</details>
+
+<h2 id="选择-ASN"><a href="#选择-ASN" class="headerlink" title="选择 ASN"></a>选择 ASN</h2><p>填写完成后，你需要一个 ASN。</p>
+<ul>
+<li><p>如果你在公共互联网上有自己的 ASN 的话。</p>
+<p>  首先让我膜拜一下大佬。</p>
+<p>  然后你可以把自己的 ASN 填进去，DN42 网络的管理员验证确认这个 ASN 归你所有后，就会批准你的请求。</p>
+<p>  不过据说比较麻烦，还容易端口冲突，不如自己弄个 DN42 的 ASN。</p>
+</li>
+<li><p>如果你在公网没有 ASN 或者不想接入 DN42 使用。</p>
+<p>  你可以在这里选择 DN42 自己的 ASN，截止到 2022 年 DN42 开放注册的 ASN 范围是 4242420000 - 4242423999，共计 4000 个。</p>
+<p>  建议通过<a target="_blank" rel="noopener" href="https://explorer.burble.com/free#/asn">区块浏览器</a>选一个空闲的 ASN。</p>
+</li>
+</ul>
+<p>然后在 <code>data/aut-num</code> 创建文件名为 ASN 编号 的文件，写入如下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">aut-num:            [你选的 ASN]</span><br><span class="line">as-name:            [昵称]-AS</span><br><span class="line">descr:              [备注]</span><br><span class="line">admin-c:            [名称]-DN42</span><br><span class="line">tech-c:             [名称]-DN42</span><br><span class="line">mnt-by:             [名称]-MNT</span><br><span class="line">source:             DN42</span><br></pre></td></tr></table></figure>
+
+<p>各个字段的解释如下</p>
+<ul>
+<li><p>aut-num：AS 编号（ASN）。</p>
+</li>
+<li><p>as-name：AS 的名称，一般只在 DN42 的一些网络结构示意图中看到。这里设置为 [昵称]-AS。</p>
+</li>
+<li><p>descr：AS 简介，一般只在结构图中看到，随意填写。</p>
+</li>
+<li><p>admin-c：Admin Contact，管理员联系信息，指向你创建的 Person 文件，[昵称]-DN42。</p>
+</li>
+<li><p>tech-c：Tech Contact，技术员联系信息，指向你创建的 Person 文件，[昵称]-DN42。</p>
+</li>
+<li><p>mnt-by：Maintain by（由谁维护），由谁维护，指向你创建的的 MNT 文件，[昵称]-MNT。</p>
+</li>
+<li><p>source：固定值 DN42。</p>
+</li>
+</ul>
+<details>
+
+<summary>以下是我注册填写的文件，仅供参考，请勿照抄！ [点击查看]</summary>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">aut-num:            AS4242422162</span><br><span class="line">as-name:            BOXIMENGLING-AS</span><br><span class="line">descr:              LuoTianyi</span><br><span class="line">admin-c:            BOXIMENGLING-DN42</span><br><span class="line">tech-c:             BOXIMENGLING-DN42</span><br><span class="line">mnt-by:             BOXIMENGLING-MNT</span><br><span class="line">source:             DN42</span><br></pre></td></tr></table></figure>
+
+</details>
+
+<h2 id="选择-IPv4-地址"><a href="#选择-IPv4-地址" class="headerlink" title="选择 IPv4 地址"></a>选择 IPv4 地址</h2><p>DN42 网络使用的 IPv4 地址是 172.20.0.0&#x2F;14，也就是 172.20.0.0-172.23.255.255。</p>
+<p>但是但是，因为有些地址是保留给其他用途的，你不能申请，所以直接从文件内选一块地址不太方便，建议还是用<a target="_blank" rel="noopener" href="https://explorer.burble.com/free#/4">区块浏览器</a>选个空闲的 IPv4。</p>
+<p>DN42 最小可申请的 IPv4 地址块是 &#x2F;29，即 8 个 IPv4 地址，去掉网络地址和广播地址，可提供 6 个可用的 IPv4 地址。</p>
+<p>DN42 网络的建议分配是 &#x2F;27，也就是 32 个 IPv4 地址，去掉网络地址和广播地址，可提供 30 个可用的 IPv4 地址。</p>
+<p>你可以直接申请的最大地址块是 &#x2F;26，可提供 64 个 IPv4 地址，同样去掉网络地址和广播地址，可提供 62 个可用的 IPv4 地址。</p>
+<p>如果你的设备很多，超过 62 个，需要更大的 IPv4 地址块，那么</p>
+<ul>
+<li><p>首先让我膜拜一下大佬。</p>
+</li>
+<li><p>然后你的注册请求不会被马上批准，你需要联系到 DN42 的其他成员，告诉大家你需要更大的 IPv4 分配并阐明理由，请求大家投票。</p>
+</li>
+<li><p>联系方式可以在<a target="_blank" rel="noopener" href="https://wiki.dn42.us/contact">这里找</a></p>
+</li>
+<li><p>但是但是，不建议一上来就申请这么大的分配。</p>
+</li>
+<li><p>可以先找一块 &#x2F;24 段余量比较多的，然后申请其中的 &#x2F;27 段，等后面有需要了再继续调整或者扩大分配，这样比较容易被批准。</p>
+</li>
+<li><p>另外，千万不要占着 &#x2F;24 不用！！！</p>
+</li>
+<li><p>DN42 的 IPv4 地址和公网一样珍贵。</p>
+</li>
+</ul>
+<p>选好 IPv4 地址块后，在 <code>data/inetnum</code> 下建一个新建地址块，比如如果你选 172.22.167.190&#x2F;27 那么文件名就是 172.22.167.190_27，然后填写这个文件。</p>
+<p>如果你不会写，可以选择把文件、地址、名称喂给 AI 让 AI 帮你写。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">inetnum:            [你选的 IPv4 地址块的网络地址] - [广播地址]</span><br><span class="line">netname:            [名称]-IPV4</span><br><span class="line">remarks:            [随便写，你也可以在这里写联系信息请求别人和你 Peer]</span><br><span class="line">descr:              [随便写]</span><br><span class="line">country:            [国家代码]</span><br><span class="line">admin-c:            [名称]-DN42</span><br><span class="line">tech-c:             [名称]-DN42</span><br><span class="line">mnt-by:             [名称]-MNT</span><br><span class="line">nserver:            [反向解析服务器]</span><br><span class="line">status:             ASSIGNED</span><br><span class="line">cidr:               [CIRID 形式的 Inetnum]</span><br><span class="line">source:             DN42</span><br></pre></td></tr></table></figure>
+
+<p>各个字段的解释如下</p>
+<ul>
+<li>inetnum：地址块的范围，也就是网络地址 - 广播地址。</li>
+<li>netname：地址块名称，基本没用，可以随便取（但一般建议保持 [昵称]-IPV4 格式）。</li>
+<li>remarks：随意填写。</li>
+<li>descr：随意填写。</li>
+<li>country：国家&#x2F;地区代号，比如中国大陆是 CN，中国香港是 HK，美国是 US。</li>
+<li>admin-c：admin contact，管理员联系信息，指向你的 Person 文件，[昵称]-DN42。</li>
+<li>tech-c：Tech Contact，技术员联系信息，指向你的 Person 文件，[昵称]-DN42。</li>
+<li>mnt-by：Maintain by，由谁维护，指向你之前的 MNT 文件，[昵称]-MNT。</li>
+<li>nserver：反向解析服务器，如果看不懂那么你大概率不需要，删掉就行。</li>
+<li>status：固定值 ASSIGNED。</li>
+<li>cidr：CIRD 形式的 Inetnum。</li>
+<li>source：固定值 DN42。</li>
+</ul>
+<details>
+
+<summary>以下是我注册填写的文件，仅供参考，请勿照抄！ [点击查看]</summary>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">inetnum:            172.20.167.192 - 172.20.167.223</span><br><span class="line">netname:            BOXIMENGLING-IPV4</span><br><span class="line">remarks:            LuoTianyi</span><br><span class="line">descr:              LuoTianyi</span><br><span class="line">country:            CN</span><br><span class="line">admin-c:            BOXIMENGLING-DN42</span><br><span class="line">tech-c:             BOXIMENGLING-DN42</span><br><span class="line">mnt-by:             BOXIMENGLING-MNT</span><br><span class="line">status:             ASSIGNED</span><br><span class="line">cidr:               172.20.167.192/27</span><br><span class="line">source:             DN42</span><br></pre></td></tr></table></figure>
+
+</details>
+
+<p>到此 IPv4 配置还没结束，你需要同时配置 route 以授权你的 ASN 使用这个 IPv4 地址。</p>
+<p>在 <code>data/route</code> 同名文件，写入如下文本。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">route:              [CRID 格式的 Inetnum]</span><br><span class="line">descr:              [随便填]</span><br><span class="line">origin:             [AS 编号]</span><br><span class="line">mnt-by:             [名称]-MNT</span><br><span class="line">source:             DN42</span><br></pre></td></tr></table></figure>
+
+<p>各个字段的解释如下</p>
+<ul>
+<li><p>route: CRID 格式的 Inetnum，也就是 xxx.xxx.xxx.xxx&#x2F;xx 这种。</p>
+</li>
+<li><p>descr: 备注，随便填。</p>
+</li>
+<li><p>origin：授权给哪个 AS 使用这个地址块，填你自己的 AS 编号。</p>
+</li>
+<li><p>mnt-by: 由谁维护，指向你的 MNT 文件。</p>
+</li>
+<li><p>source: 固定值 DN42</p>
+</li>
+</ul>
+<details>
+
+<summary>以下是我注册填写的文件，仅供参考，请勿照抄！ [点击查看]</summary>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">route:              172.20.167.192/27</span><br><span class="line">descr:              LuoTianyi</span><br><span class="line">origin:             AS4242422162</span><br><span class="line">mnt-by:             BOXIMENGLING-MNT</span><br><span class="line">source:             DN42</span><br></pre></td></tr></table></figure>
+
+</details>
+
+<h2 id="选择-IPv6-地址"><a href="#选择-IPv6-地址" class="headerlink" title="选择 IPv6 地址"></a>选择 IPv6 地址</h2><p>鉴于现在是 2025 年，大多数运营商分配&#x2F;自购的猫、家庭网关、路由器符合新的国标，支持 IPv6 网络，所以最好同时申请 IPv6 地址。</p>
+<p>DN42 的 IPv6 地址在 fd00::&#x2F;8 范围，是私有 IPv6。</p>
+<p>DN42 IPv6 分配是 &#x2F;48，足够任何人使用的（这可是可以给全球每一粒沙子都分配一个地址的 IPv6）。</p>
+<ul>
+<li>就算你的设备只支持 &#x2F;64，一个 &#x2F;48 可以划出 65535 个 &#x2F;64，你可以和每个 DN42 成员都 Peer 过去。</li>
+</ul>
+<p>你可以用<a target="_blank" rel="noopener" href="https://explorer.burble.com/free#/6">区块浏览器</a>生成随机的空闲 IPv6。</p>
+<p>你可能会想要自定义 IPv6 地址，写一些特殊纪念意义的东西进去。</p>
+<ul>
+<li><p>首先，这是可以的。</p>
+</li>
+<li><p>但是但是，如果你这样做就违反了 RFC 4193 中规定的 IPv6 ULA 地址应该随机生成，以确保全局唯一不冲突。</p>
+</li>
+<li><p>因为 DN42 拿不到其他 IPv6 地址的分配情况，你自定义的地址可能与其他网络的地址冲突。</p>
+</li>
+<li><p>如果你和别人 Peer 时你的地址和对方的其他网络冲突了，你需要重新编排网络内的全部 IPv6 地址，以确保冲突解决（讲真的，这看起来可不好玩）。</p>
+</li>
+<li><p>然后，DN42 各个管理员对自定义地址的态度不一样，有的人申请到了，但是有的人被拒绝了。</p>
+</li>
+</ul>
+<p>如果你确实想要自定义 IPv6 地址，在执行合并操作前，管理员会询问确保你确实想要自定义地址。</p>
+<blockquote>
+<p>Your inet6num violates RFC4193 section 3.2. Are you fully aware of the consequences and do you really want to continue? Being forced to renumber your whole network really isn’t fun.</p>
+</blockquote>
+<p>如果你确实认为需要自定义地址，就回复 Yes, I’m sure。</p>
+<p>待确认 IPv6 地址后，需要在 <code>/data/inet6num</code> 建立对应的 IPv6 地址块文件。</p>
+<p>格式如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">inet6num:           [同样的网络地址 - 广播地址]</span><br><span class="line">netname:            [名称]-IPV6</span><br><span class="line">descr:              [备注]</span><br><span class="line">country:            [国家/地区代码]</span><br><span class="line">admin-c:            [名称]-DN42</span><br><span class="line">tech-c:             [名称]-DN42</span><br><span class="line">mnt-by:             [名称]-MNT</span><br><span class="line">nserver:            [反向解析服务器]</span><br><span class="line">status:             ASSIGNED</span><br><span class="line">cidr:               [CRID 格式的 IPv6 地址]</span><br><span class="line">source:             DN42</span><br></pre></td></tr></table></figure>
+
+<p>各个字段的解释如下</p>
+<ul>
+<li>inetnum：地址块的范围，也就是网络地址 - 广播地址。</li>
+<li>netname：地址块名称，基本没用，可以随便取（但一般建议保持 [昵称]-IPV4 格式）。</li>
+<li>remarks：随意填写。</li>
+<li>descr：随意填写。</li>
+<li>country：国家&#x2F;地区代号，比如中国大陆是 CN，中国香港是 HK，美国是 US。</li>
+<li>admin-c：admin contact，管理员联系信息，指向你的 Person 文件，[昵称]-DN42。</li>
+<li>tech-c：Tech Contact，技术员联系信息，指向你的 Person 文件，[昵称]-DN42。</li>
+<li>mnt-by：Maintain by，由谁维护，指向你之前的 MNT 文件，[昵称]-MNT。</li>
+<li>nserver：反向解析服务器，如果看不懂那么你大概率不需要，删掉就行。</li>
+<li>status：固定值 ASSIGNED。</li>
+<li>cidr：CIRD 形式的 Inetnum。</li>
+<li>source：固定值 DN42。</li>
+</ul>
+<details>
+
+<summary>以下是我注册填写的文件，仅供参考，请勿照抄！ [点击查看]</summary>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">inet6num:           fdea:6e46:2f1c:0000:0000:0000:0000:0000 - fdea:6e46:2f1c:ffff:ffff:ffff:ffff:ffff</span><br><span class="line">netname:            BOXIMENGLING-IPV6</span><br><span class="line">descr:              LuoTianyi</span><br><span class="line">country:            CN</span><br><span class="line">admin-c:            BOXIMENGLING-DN42</span><br><span class="line">tech-c:             BOXIMENGLING-DN42</span><br><span class="line">mnt-by:             BOXIMENGLING-MNT</span><br><span class="line">status:             ASSIGNED</span><br><span class="line">cidr:               fdea:6e46:2f1c::/48</span><br><span class="line">source:             DN42</span><br></pre></td></tr></table></figure>
+
+</details>
+
+<p>然后需要建立 Route 文件，文件位于 <code>data/route6</code> 下</p>
+<p>格式如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">route6:             [CRID 格式的地址]</span><br><span class="line">descr:              [备注]</span><br><span class="line">origin:             [授权使用的 AS]</span><br><span class="line">mnt-by:             [名称]-MNT</span><br><span class="line">source:             DN42</span><br></pre></td></tr></table></figure>
+
+
+<p>各个字段的解释如下</p>
+<ul>
+<li><p>route: CRID 格式的 Inetnum，也就是 xxxx:xxxx:xxxx::&#x2F;xx 这种。</p>
+</li>
+<li><p>desct: 备注，随便填。</p>
+</li>
+<li><p>origin：授权给哪个 AS 使用这个地址块，填你自己的 AS 编号。</p>
+</li>
+<li><p>mnt-by: 由谁维护，指向你的 MNT 文件。</p>
+</li>
+<li><p>source: 固定值 DN42</p>
+</li>
+</ul>
+<details>
+
+<summary>以下是我注册填写的文件，仅供参考，请勿照抄！ [点击查看]</summary>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">route6:             fdea:6e46:2f1c::/48</span><br><span class="line">descr:              LuoTianyi</span><br><span class="line">origin:             AS4242422162</span><br><span class="line">mnt-by:             BOXIMENGLING-MNT</span><br><span class="line">source:             DN42</span><br></pre></td></tr></table></figure>
+
+</details>
+
+<p>至此你已经完成了 DN42 网络的大部分注册流程。</p>
+<h2 id="检查文件格式"><a href="#检查文件格式" class="headerlink" title="检查文件格式"></a>检查文件格式</h2><p>由于 DN42 尽可能的模拟的现实注册流程，因此对格式有严格要求。</p>
+<p>你可以使用如下命令检查文件格式（需要在仓库根目录做这个）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh ./check-my-stuff</span><br></pre></td></tr></table></figure>
+
+<p>如果没有报错，则你的文件不存在格式问题，大概率可以一次过审。</p>
+<p>但是报错了也没关系，你可以试试如下命令尝试修复文件格式。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh ./fmt-my-stuff</span><br></pre></td></tr></table></figure>
+
+<p>如果没有解决的话，你可能需要根据报错信息重走部分流程。</p>
+<h2 id="推送仓库"><a href="#推送仓库" class="headerlink" title="推送仓库"></a>推送仓库</h2><h3 id="GPG-签名"><a href="#GPG-签名" class="headerlink" title="GPG 签名"></a>GPG 签名</h3><p>在推送之前，我们需要保存本地更改，如果你使用 GPG 则必须配置 Git 签名。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config user.signingkey &lt;密钥 ID&gt;</span><br></pre></td></tr></table></figure>
+
+<p>然后使用如下命令进行提交。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -S -m <span class="string">&quot;提交信息&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="SSH-签名"><a href="#SSH-签名" class="headerlink" title="SSH 签名"></a>SSH 签名</h3><p>对于 SSH 签名，你需要使用 git log 查看你提交的 Hash。</p>
+<p>然后使用如下命令进行签名。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> &lt;commit <span class="built_in">hash</span>&gt; | ssh-keygen -Y sign -f ~/.ssh/id_ed25519 -n dn42</span><br></pre></td></tr></table></figure>
+
+<p>然后将结果附在 PR Description 中。</p>
+<h3 id="更新本地分支"><a href="#更新本地分支" class="headerlink" title="更新本地分支"></a>更新本地分支</h3><p>因为整个注册流程非常繁琐以至于需要消耗大量时间，在完成期间远程分支可能会有更新，你需要同步这些更改</p>
+<p>使用如下命令同步更改。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch origin master &amp;&amp; git checkout &lt;你的用户名&gt;/register &amp;&amp; git rebase -i -S origin/master</span><br></pre></td></tr></table></figure>
+
+<h3 id="推送"><a href="#推送" class="headerlink" title="推送"></a>推送</h3><p>使用如下命令推送。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></table></figure>
+
+<h2 id="发送注册请求"><a href="#发送注册请求" class="headerlink" title="发送注册请求"></a>发送注册请求</h2><p>转到 DN42 Registry 存储库，找到合并请求选项卡，然后点击创建合并请求。</p>
+<p>将来源设置成账号下的存储库，然后点击创建。</p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>1.请使用英文。</p>
+<p>2.一个 PR 不能包含多于一个 Commit，如果你创建了两个 Commit，请使用 <code>bash ./squash-my-commits</code>，然后通过 <code>git push -f</code> 强制推送到远程存储库（不加 -f 会被 rejected）。</p>
+<p>3.如果管理员要求更改，请按照说明更改然后推送到存储库（不要重开 PR）。</p>
+<h1 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h1><p>如果没有意外的话，PR 会在一至两天内被合并。</p>
+<p>然后你就可以拿着新新分配的 IP 去和别人 Peer 一下。</p>
+</div>
+        </div>
+        
+            <div class="kratos-copyright text-center clearfix">
+                <span itemprop="copyrightNotice">本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</span>
+            </div>
+        
+        <footer class="kratos-entry-footer clearfix">
+            
+            
+            
+                <div class="post-actions text-center clearfix" id="post-actions">
+                
+                    <a class="donate" href="javascript:;" onclick="krOpenDonateModal()"><i class="fa fa-bitcoin"></i> 打赏</a>
+                
+                
+                    <a class="share" href="javascript:;" onclick="krOpenShareModal()"><i class="fa fa-share-alt"></i> 分享</a>
+                
+                </div>
+            
+            <div class="footer-tag clearfix">
+                <div class="pull-left">
+                <i class="fa fa-tags"></i>
+                    <a class="tag-none-link" href="/tags/Network/" rel="tag">Network</a>
+                </div>
+                <div class="pull-date">
+                    <time datetime="2025-08-04T02:52:49.872Z" itemprop="dateModified">最后编辑：2025-08-04</time>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+        <nav class="navigation post-navigation clearfix" role="navigation">
+            
+            
+            <div class="nav-next clearfix">
+                <a title=" 从零开始写一个 Minecraft 启动器 - 系列专栏" href="/posts/build-launcher/index/">下一篇 <i class="fa fa-angle-right"></i></a>
+            </div>
+            
+        </nav>
+    
+    
+        <div class="comment-post">
+            
+        </div>
+    
+</article>
+
+        
+
+            </section>
+
+            
+                
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/assets/img/boximengling.png" alt="薄奚梦灵" loading="lazy" decoding="auto" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center">至少在这一刻 热爱不问为何</p>
+    </div>
+    <div class="site-meta">
+        <a class="meta-item" href="/archives/">
+            <span class="title">
+                文章
+            </span>
+            <span class="count">
+                8
+            </span>
+        </a>
+        <a class="meta-item" href="/categories/">
+            <span class="title">
+                分类
+            </span>
+            <span class="count">
+                1
+            </span>
+        </a>
+        <a class="meta-item" href="/tags/">
+            <span class="title">
+                标签
+            </span>
+            <span class="count">
+                11
+            </span>
+        </a>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                    <aside id="krw-toc" class="widget widget-kratos-toc clearfix toc-div-class" >
+    <div class="photo-background"></div>
+    <h4 class="widget-title no-after">
+        <i class="fa fa-compass"></i>
+        文章目录
+        <span class="toc-progress-bar" role="progressbar" aria-label="阅读进度："></span>
+    </h4>
+    <div class="textwidget">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E4%B9%8B%E5%89%8D%E5%BF%85%E8%AF%BB"><span class="toc-text">开始之前必读</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E7%BD%AE%E5%B7%A5%E4%BD%9C"><span class="toc-text">前置工作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-GPG-%E5%AF%86%E9%92%A5"><span class="toc-text">创建 GPG 密钥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-SSH-%E5%AF%86%E9%92%A5"><span class="toc-text">创建 SSH 密钥</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E5%BC%8F%E6%B5%81%E7%A8%8B"><span class="toc-text">正式流程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-Mntner-%E6%96%87%E4%BB%B6"><span class="toc-text">创建 Mntner 文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-Person-%E6%96%87%E4%BB%B6"><span class="toc-text">创建 Person 文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9-ASN"><span class="toc-text">选择 ASN</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9-IPv4-%E5%9C%B0%E5%9D%80"><span class="toc-text">选择 IPv4 地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9-IPv6-%E5%9C%B0%E5%9D%80"><span class="toc-text">选择 IPv6 地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F"><span class="toc-text">检查文件格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A8%E9%80%81%E4%BB%93%E5%BA%93"><span class="toc-text">推送仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GPG-%E7%AD%BE%E5%90%8D"><span class="toc-text">GPG 签名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SSH-%E7%AD%BE%E5%90%8D"><span class="toc-text">SSH 签名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E6%9C%AC%E5%9C%B0%E5%88%86%E6%94%AF"><span class="toc-text">更新本地分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E9%80%81"><span class="toc-text">推送</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%91%E9%80%81%E6%B3%A8%E5%86%8C%E8%AF%B7%E6%B1%82"><span class="toc-text">发送注册请求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">注意事项</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%93%E6%9D%9F"><span class="toc-text">结束</span></a></li></ol>
+    </div>
+</aside>
+                
+                
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类列表</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/">友情链接</a><span class="category-list-count">1</span></li></ul>
+  </aside>
+
+
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/Minecraft-Launcher/" style="font-size: 0.6em;">Minecraft Launcher</a> <a href="/tags/Network/" style="font-size: 0.8em;">Network</a> <a href="/tags/PCL2/" style="font-size: 0.6em;">PCL2</a> <a href="/tags/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/" style="font-size: 0.6em;">友情链接</a> <a href="/tags/%E5%B8%AE%E5%8A%A9/" style="font-size: 0.8em;">帮助</a> <a href="/tags/%E6%97%A0%E4%B8%AD%E7%94%9F%E6%9C%89%E7%B3%BB%E5%88%97/" style="font-size: 0.6em;">无中生有系列</a> <a href="/tags/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97/" style="font-size: 0.6em;">更新日志</a> <a href="/tags/%E6%9C%89%E7%94%9F%E4%B9%8B%E5%B9%B4%E7%B3%BB%E5%88%97/" style="font-size: 0.6em;">有生之年系列</a> <a href="/tags/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/" style="font-size: 0.6em;">疑难杂症</a> <a href="/tags/%E7%AB%99%E7%82%B9%E5%85%AC%E5%91%8A/" style="font-size: 0.6em;">站点公告</a> <a href="/tags/%E9%9A%8F%E6%89%8B%E8%AE%B0/" style="font-size: 0.6em;">随手记</a>
+      </div>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/posts/support/website/changelog/"><i class="fa fa-book"></i> changelog</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/posts/support/website/feature/"><i class="fa fa-book"></i> 站点维护路线图</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/posts/support/website/friend-link-tip/"><i class="fa fa-book"></i> 友链申请须知</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/posts/friend-link/"><i class="fa fa-book"></i> 友链展示区</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/posts/support/pcl2/network/WSAStartUpFailed/"><i class="fa fa-book"></i> PCL 报错应用程序没有调用 WSAStartUp，或 WSAStartUp 失败解决方案</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+            
+
+        
+
+                </div>
+    </div>
+</div>
+
+<footer>
+    <div id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                            <li>
+                                <a href="https://github.com/shimoranla" target="_blank" rel="nofollow">
+                                    <i class="fa fa-github"></i>
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="/atom.xml" target="_blank" rel="nofollow">
+                                    <i class="fa fa-rss"></i>
+                                </a>
+                            </li>
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2025 薄奚梦灵的小窝 版权所有.</li>
+                            <li>本站与天依和薄奚梦灵携手并进了 <span id="kr-since">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>正在使用 <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a> 主题.apk</li>
+                            <li>站点由 <a href="https://github.com/shimoranla/wiki/graphs/contributors" target="_blank">薄奚梦灵</a> 用 <i class="fa fa-heart" style="color:#d43f57"></i> 搭建</li>
+                        </div>
+                        <!-- 额外的追加注入项 -->
+                        
+                            <div>
+                                
+                                    <li>由 <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a> 构建</li>
+                                
+                                    <li><a href="https://www.bilibili.com/video/BV1GJ411x7h7" target="_blank">本站 Up Time</a></li>
+                                
+                            </div>
+                        
+                            <div>
+                                
+                                    <li>由 <a href="https://www.alibabacloud.com" target="_blank" rel="nofollow">阿里云 ESA</a> 强力驱动</li>
+                                
+                                    <li>在 <a href="https://vercel.com" target="_blank">Vercel</a> 暖心托管</li>
+                                
+                            </div>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                <div class="box theme-box" id="theme-toggle">
+                    <span class="fa fa-adjust"></span>
+                </div>
+            </div>
+            <div id="gotop-box" class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+
+    <div id="kr-donate-modal" class="kr-modal">
+    <div class="kr-modal-bg" onclick="krCloseDonateModal()"></div>
+    <div class="kr-modal-content">
+        <div class="kr-modal-header">
+            <div class="kr-modal-icon">
+                <i class="fa fa-bitcoin"></i>
+            </div>
+            <div class="kr-modal-title">赞助喵</div>
+            <button class="kr-modal-close" onclick="krCloseDonateModal()">
+                <i class="fa fa-times-circle"></i>
+            </button>
+        </div>
+        <div class="kr-modal-body">
+            <div class="kr-donate-message">非常感谢您的喜欢！ <i class="fa fa-heart" style="color:#d43f57"></i></div>
+            <div class="kr-donate-qr" id="kr-donate-qr">
+                
+                    <img class="kr-donate-placeholder" src="https://dev.krt.moe/demo-assets/donate.webp" alt="赞助喵" />
+                
+            </div>
+            <div class="kr-donate-platforms">
+                
+                    
+                        <button class="kr-donate-platform-button" style="color: skyblue;" title="微信" onclick="krDonateModalShowPlatformQR('wxp://f2f0InGZLe4uUxiJ0TwtBC02Nz_qC2hetr5dgsjws0KImQmiKVV-DVFd2HDv7XCMCAWY', 'skyblue')">
+                            <i class="fa fa-wechat"></i>
+                        </button>
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+<script defer src="/js/kr-modal/donate.min.js"></script>
+
+
+
+
+    <div id="kr-share-modal" class="kr-modal">
+    <div class="kr-modal-bg" onclick="krCloseShareModal()"></div>
+    <div class="kr-modal-content">
+        <div class="kr-modal-header">
+            <div class="kr-modal-icon">
+                <i class="fa fa-share-alt"></i>
+            </div>
+            <div class="kr-modal-title">分享这一刻</div>
+            <button class="kr-modal-close" onclick="krCloseShareModal()">
+                <i class="fa fa-times-circle"></i>
+            </button>
+        </div>
+        <div class="kr-modal-body">
+            <div class="kr-share-message">让朋友们也来瞅瞅！</div>
+            <div class="kr-share-qr" id="kr-share-qr"></div>
+            <div class="kr-share-platforms">
+                
+                    <button class="kr-share-platform-button" style="color: #62b6e7;" title="喵窝" onclick="krShareModalOpenPlatform('https://nya.one/share?text=%3E%20$TITLE%0A%3E%0A%3E%20$SUMMARY%0A----%20$SITE%0A%0A$URL')">
+                        <svg fill="currentColor" width="18" height="18" viewBox="0 0 329 388"><path d="M0,36.226c0,-19.993 16.233,-36.226 36.226,-36.226c13.788,0 25.787,7.719 31.908,19.068l188.366,229.845l0,-111.259c-6.356,5.508 -14.645,8.843 -23.707,8.843c-19.994,0 -36.226,-16.232 -36.226,-36.226c-0,-8.551 2.968,-16.413 7.93,-22.613l-0.015,-0.013l56.614,-69.08c6.2,-11.073 18.047,-18.565 31.63,-18.565c19.994,0 36.227,16.233 36.227,36.226l-0,314.644c-0,19.994 -16.233,36.226 -36.227,36.226c-13.166,0 -24.701,-7.039 -31.044,-17.555l-189.229,-230.899l-0,212.228c-0,19.994 -16.233,36.226 -36.227,36.226c-19.993,0 -36.226,-16.232 -36.226,-36.226l0,-314.644Z" /></svg>
+                    </button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<script defer src="/js/kr-modal/share.min.js"></script>
+
+
+
+<!-- 额外的追加注入项 -->
+
+
+        <script>
+    if (!window.kr) {
+        window.kr = {};
+    }
+    window.kr.notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));
+    window.kr.siteRoot = "/";
+</script>
+
+
+  <script defer src="/vendors/nprogress@0.2.0/nprogress.js"></script>
+
+
+
+  <script defer src="/vendors/viewerjs@1.11.6/dist/viewer.min.js"></script>
+
+
+<script defer src="/js/kr-core.min.js"></script>
+
+
+  <script defer src="/js/kr-pjax.min.js"></script>
+
+
+<!-- 额外的追加注入项 -->
+
+  /assets/script/GmAlert.js
+
+
+    </body>
+</html>
