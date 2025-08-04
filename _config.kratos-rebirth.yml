@@ -9,11 +9,11 @@ search:
 
 # 图片配置
 image:
-  favicon: "/assets/boximengling.png" # 站点图标
-  avatar: "/assets/boximengling.png" # 个人信息挂件上的头像
+  favicon: "/assets/img/boximengling.png" # 站点图标
+  avatar: "/assets/img/boximengling.png" # 个人信息挂件上的头像
   background:
-    light: "/assets/guangyuying.jpg"
-    dark: "/assets/zhenzhu.jpg"
+    dark: "/assets/img/zhenzhu.jpg"
+    light: "/assets/img/guangyuying.jpg"
 
 # 顶部导航栏配置
 nav:
@@ -124,4 +124,5 @@ visit_count:
 additional_injections:
   head: "" # 搜索引擎验证，或是追加的样式表
   footer: ""
-  after_footer: "" # 站点分析，或是追加的脚本
+  after_footer: 
+    - "/assets/script/GmAlert.js"

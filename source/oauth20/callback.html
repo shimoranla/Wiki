@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <body>
+            <script src="/assets/script/notice/GmAlert.min.js"></script>
+        <div id="oauth20">
+            <h1 class="kratos-page-title text-center" itemprop="name headline">
+            <noscript>
+                <p>
+                    OAuth 授权回调结果：失败 
+                    <br> <br>
+                    您的浏览器（或广告阻止程序）<br> 正在阻止本站的 JavaScript 代码 <br> <br>
+                </p>
+            </noscript>
+            </h1>
+        </div>
+        <script>
+            function resolveHTML(html){
+                if(html === null || html === undefined) return null;
+                 return html.replace(/[&<>"']/g, tag => ({
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '"': '&quot;',
+                    "'": '&#39;'
+                }[tag] || tag));
+            }
+            let resultHTML = `
+                <h2 class="kratos-page-title text-center" itemprop="name headline">OAuth 授权回调结果：{isOK} <br> <br> <p class="text-center"> {descr} </p> <br> <br></h2>
+            `;
+            let url = new URL(window.location.href);
+            let code = url.searchParams.get("code");
+            let error = resolveHTML(url.searchParams.get("error"));
+            let errorDescription = resolveHTML(url.searchParams.get("error_description"));
+            let callbackHTML = "";
+            // 让我们 404 一下
+            if(error === null && errorDescription === null && code === null){ 
+                window.location.href = "https://boximengling.luotianyi-0712.top/404"
+            } 
+            else if(error){
+                if(error.includes("denied")) errorDescription = "用户取消授权";
+                callbackHTML = resultHTML.replace("{isOK}","登录失败").replace("{descr}",errorDescription);
+            }
+            else if (!code){
+                callbackHTML = resultHTML.replace("{isOK}","登录失败").replace("{descr}","授权代码无效");
+            }
+            else{
+                callbackHTML =  resultHTML.replace("{isOK}","登录成功").replace("{descr}","此页面将在 5 秒后关闭");
+                setTimeout(5000,() => localStorage.setItem("closeOAuthWindow","True"))
+            }
+            
+            window.document.getElementById("oauth20").outerHTML = callbackHTML
+            //Gmal.alert('这是一个弹窗')
+        </script>
+        <p>这可能导致评论等功能无法使用，除此之外不会有实质性影响</p>
+    </body>
+</html>

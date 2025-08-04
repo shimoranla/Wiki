@@ -6,7 +6,7 @@ donate: true
 share: true
 date: 2025-08-02 13:57:29
 categories:
-cover: /assets/baishixi.jpg
+cover: /assets/img/baishixi.jpg
 tags:
 - 帮助
 - 疑难杂症

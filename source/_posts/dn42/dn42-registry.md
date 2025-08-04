@@ -7,7 +7,7 @@ share: true
 date: 2025-08-01 10:51:11
 categories:
 tags: Network
-cover: "/assets/yuehuawu.jpg"
+cover: "/assets/img/yuehuawu.jpg"
 ---
 
 # 开始之前必读

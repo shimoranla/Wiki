@@ -7,6 +7,6 @@ share: true
 date: 2025-08-02 13:44:59
 categories:
 tags:
-cover: /assets/diebian.jpg
+cover: /assets/img/diebian.jpg
 ---
 

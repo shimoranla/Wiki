@@ -5,7 +5,7 @@ toc: true
 donate: true
 share: true
 date: 2025-08-02 14:31:34
-cover: /assets/zhenzhu.jpg
+cover: /assets/img/zhenzhu.jpg
 categories:
 tags:
 ---

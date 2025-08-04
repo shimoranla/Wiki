@@ -6,7 +6,7 @@ tags:
 - Minecraft Launcher
 - 无中生有系列
 - 有生之年系列
-cover: /assets/diebian.jpg
+cover: /assets/img/diebian.jpg
 ---
 
 开坑了开坑了，这是个大型专栏，从 0 到 1 教你怎么写启动器

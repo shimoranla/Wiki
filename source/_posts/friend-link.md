@@ -7,7 +7,7 @@ share: true
 date: 2025-08-02 14:10:31
 categories: 友情链接
 tags: 友情链接
-cover: /assets/zhenzhu.jpg
+cover: /assets/img/zhenzhu.jpg
 ---
 
 {% alertpanel info "温馨提示" %}
